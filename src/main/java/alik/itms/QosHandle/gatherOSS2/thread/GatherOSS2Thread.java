@@ -340,6 +340,20 @@ public class GatherOSS2Thread implements Runnable{
 		}
 		loger.warn("[{}]X_CU_OS[{}]采集完成", deviceId, StringUtil.getStringValue(paramValueMap, "InternetGatewayDevice.DeviceInfo.X_CU_OS", ""));
 		
+		
+		maptemp = acsCorba.getParaValueMap(deviceId,
+				new String[]{"InternetGatewayDevice.DeviceInfo.X_CU_SerialNumber"});
+		if (maptemp != null && !maptemp.isEmpty()){
+			pathBase.putAll(maptemp);
+			paramValueMap.putAll(maptemp);
+		}
+		else{
+			pathBase.put("InternetGatewayDevice.DeviceInfo.X_CU_SerialNumber", "");
+			paramValueMap.put("InternetGatewayDevice.DeviceInfo.X_CU_SerialNumber", "");
+		}
+		loger.warn("[{}]X_CU_SerialNumber[{}]采集完成", deviceId, StringUtil.getStringValue(paramValueMap, "InternetGatewayDevice.DeviceInfo.X_CU_SerialNumber", ""));
+		
+		
 		maptemp = acsCorba.getParaValueMap(deviceId,
 				new String[]{"InternetGatewayDevice.LANDevice.1.WLANConfiguration.1.X_CU_Band"});
 		if (maptemp != null && !maptemp.isEmpty()){
